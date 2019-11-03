@@ -78,4 +78,15 @@ class Driver extends Base implements DriverInterface
 
     return $cached ? true : false;
   }
+
+  /**
+   * Check if item is cached
+   *
+   * @param string $key
+   * @return bool
+   */
+  public function present(string $key) : bool
+  {
+    return Cache::where('key', $key)->exists();
+  }
 }
