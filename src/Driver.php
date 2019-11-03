@@ -80,6 +80,19 @@ class Driver extends Base implements DriverInterface
   }
 
   /**
+   * Retrieve cached value
+   *
+   * @param string $key
+   * @return mixed
+   */
+  public function retrieve(string $key)
+  {
+    if (!$this->present($key)) return null;
+
+    return Cache::where('key', $key)->first()->value;
+  }
+
+  /**
    * Check if item is cached
    *
    * @param string $key
