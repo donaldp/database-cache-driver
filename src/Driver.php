@@ -112,4 +112,20 @@ class Driver extends Base implements DriverInterface
   {
     return [];
   }
+
+  /**
+   * Get cache details
+   *
+   * @return array|null
+   */
+  public function details()
+  {
+    $last = Cache::orderBy('updated_at', 'desc')->first();
+
+    return [
+      'records' => Cache::count(),
+      'size' => round(Cache::count() / 1024, 1),
+      'updated_at' => $last ? $last->updated_at->toDateTimeString() : null
+    ];
+  }
 }
