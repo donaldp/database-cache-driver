@@ -2,6 +2,7 @@
 
 namespace Don47\DatabaseCacheDriver;
 
+use Carbon\Carbon;
 use Modulus\Utility\Plugin;
 use Modulus\Hibernate\Cache\CacheBase;
 use Don47\DatabaseCacheDriver\Mocks\Connection;
@@ -74,5 +75,18 @@ class CachePlugin extends Plugin
   public static function boot($app)
   {
     CacheBase::register('database', Driver::class);
+  }
+
+  /**
+   * Auto delete expired cache
+   *
+   * @param \GO\Scheduler  $scheduler
+   * @return void
+   */
+  public static function schedule($scheduler)
+  {
+    $scheduler->call(function() {
+      Cache::where('expiry_date', '<=', Carbon::now()->toDateTimeString())->delete();
+    })->everyMinute();
   }
 }
