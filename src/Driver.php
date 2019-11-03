@@ -102,4 +102,14 @@ class Driver extends Base implements DriverInterface
   {
     return Cache::where('key', $key)->exists();
   }
+
+  /**
+   * Get all cached data
+   *
+   * @return array
+   */
+  public function all() : array
+  {
+    return [];
+  }
 }
