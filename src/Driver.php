@@ -2,6 +2,7 @@
 
 namespace Don47\DatabaseCacheDriver;
 
+use Carbon\Carbon;
 use Modulus\Hibernate\Cache\Driver as Base;
 use Modulus\Hibernate\Cache\DriverInterface;
 
@@ -49,5 +50,32 @@ class Driver extends Base implements DriverInterface
     }
 
     return false;
+  }
+
+  /**
+   * Assign new item to key
+   *
+   * @param string $key
+   * @param mixed $value
+   * @param Carbon $expire
+   * @return bool
+   */
+  public function assign(string $key, $value, ?Carbon $expire = null) : bool
+  {
+    if (Cache::where('key', $key)->exists()) {
+      return Cache::where('key', $key)->update([
+        'key' => $key,
+        'value' => $value,
+        'expiry_date' => $expire
+      ]);
+    }
+
+    $cached = Cache::create([
+      'key' => $key,
+      'value' => $value,
+      'expiry_date' => $expire
+    ]);
+
+    return $cached ? true : false;
   }
 }
