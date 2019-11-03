@@ -1,0 +1,22 @@
+{
+  "name": "don47/database-cache-driver",
+  "description": "Database Cache Driver for Modulus",
+  "keywords": ["modulus", "cache", "driver", "database"],
+  "version": "0.1",
+  "license": "MIT",
+  "type": "package",
+  "support": {
+    "issues": "https://github.com/donaldp/database-cache-driver/issues",
+    "source": "https://github.com/donaldp/database-cache-driver"
+  },
+  "authors": [{
+    "name": "Donald Pakkies",
+    "email": "donaldpakkies@gmail.com"
+  }],
+  "autoload": {
+    "psr-4": {
+      "Don47\\DatabaseCacheDriver\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}
