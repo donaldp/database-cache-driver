@@ -1,4 +1,4 @@
-# Modulus Core
+# Database Cache Driver for Modulus
 
 This package enables your database connection(s) as `cache` drivers.
 
