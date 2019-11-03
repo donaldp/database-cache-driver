@@ -23,4 +23,14 @@ class Driver extends Base implements DriverInterface
   {
     parent::__construct();
   }
+
+  /**
+   * Delete cache
+   *
+   * @return bool
+   */
+  public function delete() : bool
+  {
+    return Cache::truncate();
+  }
 }
