@@ -33,4 +33,21 @@ class Driver extends Base implements DriverInterface
   {
     return Cache::truncate();
   }
+
+  /**
+   * Remove key from cache
+   *
+   * @param string $key
+   * @return bool
+   */
+  public function remove(string $key) : bool
+  {
+    $cached = Cache::where('key', $key)->first();
+
+    if ($cached) {
+      return $cached->delete();
+    }
+
+    return false;
+  }
 }
