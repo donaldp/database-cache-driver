@@ -13,6 +13,9 @@
     "name": "Donald Pakkies",
     "email": "donaldpakkies@gmail.com"
   }],
+  "require": {
+    "modulusphp/framework": "*"
+  },
   "autoload": {
     "psr-4": {
       "Don47\\DatabaseCacheDriver\\": "src/"
